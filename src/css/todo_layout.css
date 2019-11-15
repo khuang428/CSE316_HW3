@@ -20,8 +20,17 @@ body {
   top: 5%;
 }
 
+.home_new_list_button{
+  margin-top: 20px;
+}
+
+h4{
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
 div.banner {
-  padding: 20px;
+  padding: 20px!important;
   margin-top: 60px;
 }
 
@@ -30,15 +39,19 @@ form {
   margin-top: 60px;
 }
 
-form button, form h5 {
+form button, form h4 {
   margin: 20px 0;
+}
+
+form div{
+  margin-top: 20px;
 }
 
 input[type=text]:not(.browser-default):focus:not([readonly]),
 input[type=email]:not(.browser-default):focus:not([readonly]),
 input[type=password]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]){
-  border-color: #ec407a;
+  border-color: #42a5f5 ;
   box-shadow: none;
 }
 
@@ -46,5 +59,26 @@ input[type=text]:not(.browser-default):focus:not([readonly]) + label,
 textarea.materialize-textarea:focus:not([readonly]) + label,
 input[type=email]:not(.browser-default):focus:not([readonly]) + label,
 input[type=password]:not(.browser-default):focus:not([readonly]) + label{
-  color: #ec407a !important;
+  color: #42a5f5  !important;
+}
+
+.colored-checkbox[type="checkbox"].filled-in:checked + span:not(.lever):after{
+  border: 2px solid #546e7a;
+  background-color: #546e7a;
+}
+.row{
+  margin:0;
+  padding-bottom: 0!important;
+}
+
+.assigned-row{
+  padding-top: 0!important;
+}
+
+.col{
+  padding-left:0!important;
+}
+
+.list-header{
+  font-size:30px;
 }

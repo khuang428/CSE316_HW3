@@ -14,8 +14,12 @@
 }
 
 body {
-  background-color: var(--swatch-foundation);
+  background-color: #e6e8e6;
   font-family: 'Lexend Exa';
+}
+
+button{
+  font-family: 'Lexend Exa'!important;
 }
 
 div.banner {
@@ -34,6 +38,7 @@ div.banner {
 
 .home_new_list_button {
   font-size: 32pt;
+  text-transform: none!important;
 }
 .home_new_list_button:hover {
   box-shadow: 1px 2px;

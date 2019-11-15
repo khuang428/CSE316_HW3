@@ -46,7 +46,7 @@ class LoginScreen extends Component {
     return (
       <div className="container">
         <div className="row">
-          <form onSubmit={this.handleSubmit} className="col s4 white">
+          <form onSubmit={this.handleSubmit} className="col s4">
             <h5 className="grey-text text-darken-3">Login</h5>
             <div className="input-field">
               <label htmlFor="email">Email</label>
@@ -57,7 +57,7 @@ class LoginScreen extends Component {
               <input className="active" type="password" name="password" id="password" onChange={this.handleChange} />
             </div>
             <div className="input-field">
-              <button type="submit" className="btn pink lighten-1 z-depth-0">Login</button>
+              <button type="submit" className="btn blue-grey darken-1 z-depth-1">Login</button>
               {authError ? <div className="red-text center"><p>{authError}</p></div> : null}
             </div>
           </form>

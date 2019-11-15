@@ -3,15 +3,21 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import TodoListCard from './TodoListCard';
+import { getFirestore } from 'redux-firestore';
 
 class TodoListLinks extends React.Component {
+    updateTime(id){
+        const fireStore = getFirestore();
+        fireStore.collection('todoLists').doc(id).update({time_updated:new Date().getTime()});
+    }
+
     render() {
         const todoLists = this.props.todoLists;
         console.log(todoLists);
         return (
             <div className="todo-lists section">
                 {todoLists && todoLists.map(todoList => (
-                    <Link to={'/todoList/' + todoList.id} key={todoList.id}>
+                    <Link to={'/todoList/' + todoList.id} key={todoList.id} onClick={()=> this.updateTime(todoList.id)}> 
                         <TodoListCard todoList={todoList} />
                     </Link>
                 ))}

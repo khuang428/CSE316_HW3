@@ -59,6 +59,6 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-      { collection: 'todoLists' },
+      { collection: 'todoLists' , orderBy: ['time_updated', 'desc']},
     ]),
 )(HomeScreen);

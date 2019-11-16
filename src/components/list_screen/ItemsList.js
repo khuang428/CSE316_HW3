@@ -29,7 +29,8 @@ class ItemsList extends React.Component {
                         
                     );})
                 }
-                <div className="container blue-grey"></div>
+                {items.length%2==0?<div className="card blue-grey lighten-1 add-item-card"><i className="material-icons medium white-text add-item-icon">add_circle_outline</i></div>
+                                  :<div className="card blue-grey lighten-2 add-item-card"><i className="material-icons medium white-text add-item-icon">add_circle_outline</i></div>}
             </div>
         );
     }

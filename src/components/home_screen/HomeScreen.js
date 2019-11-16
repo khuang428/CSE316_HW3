@@ -5,7 +5,6 @@ import { NavLink, Redirect } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase';
 import TodoListLinks from './TodoListLinks'
 import { getFirestore } from 'redux-firestore';
-import { createTodoListHandler } from '../../store/database/asynchHandler';
 
 class HomeScreen extends Component {
 
@@ -14,8 +13,8 @@ class HomeScreen extends Component {
         fireStore.collection('todoLists').add({
             name : '',
             owner: '',
-            time_updated:0,
-            todoList: {}
+            time_updated: new Date().getTime(),
+            items:[]
         }).then(ref => {
             this.props.history.push('/todoList/'+ref.id);
         });

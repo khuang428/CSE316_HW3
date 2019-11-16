@@ -105,3 +105,12 @@ input[type=password]:not(.browser-default):focus:not([readonly]) + label{
 .modal,.modal-footer{
   background-color:#e6e8e6!important;
 }
+
+.add-item-card{
+  text-align: center;
+  cursor: pointer;
+}
+
+.add-item-icon{
+  padding-top:10px;
+}

@@ -42,7 +42,7 @@ class ListScreen extends Component {
             <div className="container">
                 <div className = "row">
                     <h4 className="grey-text text-darken-3 col s11">Todo List</h4>
-                    <Modal header="Delete List?" options={{dismissible: false}} trigger={<i className="delete-list material-icons medium right">delete_forever</i>}
+                    <Modal header="Delete List?" options={{dismissible: false}} trigger={<i className="delete-list material-icons medium right grey-text text-darken-2">delete_forever</i>}
                     actions={[<Button className="blue-grey darken-1" onClick={this.handleDelete} modal="close">Yes</Button>,<Button className="blue-grey darken-1" modal="close">No</Button>]}>
                         <p>
                             Are you sure you want to delete this list?

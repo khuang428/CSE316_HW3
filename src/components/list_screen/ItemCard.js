@@ -3,13 +3,27 @@ import { Button } from 'react-materialize';
 import Icon from 'react-materialize/lib/Icon';
 
 class ItemCard extends React.Component {
-    handleEdit = (e) =>{
-        const { target } = e;
+    handleMoveUp = (e,id) =>{
+        e.preventDefault();
 
+    }
 
+    handleMoveDown = (e,id) =>{
+        e.preventDefault();
+
+    }
+
+    handleDelete = (e,id) =>{
+        e.preventDefault();
+
+    }
+
+    handleEmptyClick = (e) =>{
+        e.preventDefault();
     }
     render() {
         const { item } = this.props;
+        const { todoList } = this.props;
         const id = item.id;
         return (
             <>
@@ -18,11 +32,13 @@ class ItemCard extends React.Component {
                     <div className="card-content white-text row">
                         <div className="card-title col s3">{item.description}</div>
                         <div className="card-title col s3">{item.due_date}</div>
-                        {item.completed?<div className="card-title col s3">Completed <i className="material-icons">check</i></div>
+                        {item.completed?<div className="card-title col s3">Completed <i className="material-icons">alarm_on</i></div>
                                     :<div className="card-title col s3">Pending <i className="material-icons">alarm</i></div>}
-                        <Button floating fab={{direction: 'left'}} icon={<Icon>dehaze</Icon>} large className="grey darken-2">
-                            <Button floating icon={<Icon>arrow_upward</Icon>} className="grey darken-1" />
-                            <Button floating icon={<Icon>arrow_downward</Icon>} className="grey darken-1" />
+                        <Button floating fab={{direction: 'left'}} icon={<Icon>dehaze</Icon>} large className="grey darken-2" onClick={(e)=>this.handleEmptyClick(e)}>
+                            {id==0?<Button floating icon={<Icon>arrow_upward</Icon>} className="grey lighten-2" onClick={(e)=>this.handleEmptyClick(e)}/>
+                                  :<Button floating icon={<Icon>arrow_upward</Icon>} className="grey darken-1" />}
+                            {id==todoList.items.length-1?<Button floating icon={<Icon>arrow_downward</Icon>} className="grey lighten-2" onClick={(e)=>this.handleEmptyClick(e)}/>
+                                                        :<Button floating icon={<Icon>arrow_downward</Icon>} className="grey darken-1" />}
                             <Button floating icon={<Icon>delete</Icon>} className="grey darken-1" />
                         </Button>
                     </div>
@@ -32,11 +48,12 @@ class ItemCard extends React.Component {
                     <div className="card-content white-text row">
                         <div className="card-title col s3">{item.description}</div>
                         <div className="card-title col s3">{item.due_date}</div>
-                        {item.completed?<div className="card-title col s3">Completed <i className="material-icons">done</i></div>
+                        {item.completed?<div className="card-title col s3">Completed <i className="material-icons">alarm_on</i></div>
                                     :<div className="card-title col s3">Pending <i className="material-icons">alarm</i></div>}
-                        <Button floating fab={{direction: 'left'}} icon={<Icon>dehaze</Icon>} large className="grey darken-2">
+                        <Button floating fab={{direction: 'left'}} icon={<Icon>dehaze</Icon>} large className="grey darken-2" onClick={(e)=>this.handleEmptyClick(e)}>
                             <Button floating icon={<Icon>arrow_upward</Icon>} className="grey darken-1" />
-                            <Button floating icon={<Icon>arrow_downward</Icon>} className="grey darken-1" />
+                            {id==todoList.items.length-1?<Button floating icon={<Icon>arrow_downward</Icon>} className="grey lighten-2" onClick={(e)=>this.handleEmptyClick(e)}/>
+                                                        :<Button floating icon={<Icon>arrow_downward</Icon>} className="grey darken-1" />}
                             <Button floating icon={<Icon>delete</Icon>} className="grey darken-1" />
                         </Button>
                     </div>

@@ -26,7 +26,7 @@ body {
 
 h4{
   margin-top: 50px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 div.banner {
@@ -81,4 +81,27 @@ input[type=password]:not(.browser-default):focus:not([readonly]) + label{
 
 .list-header{
   font-size:30px;
+}
+
+.fixed-action-btn{
+  position: relative;
+  float:right;
+  top:5px;
+}
+
+.delete-list{
+  float:right;
+  margin-top: 40px;
+  cursor: pointer;
+}
+.modal p{
+  font-size:20px;
+}
+
+.bold-text{
+  font-weight: bold;
+}
+
+.modal,.modal-footer{
+  background-color:#e6e8e6!important;
 }

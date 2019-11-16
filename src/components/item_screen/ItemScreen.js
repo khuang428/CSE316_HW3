@@ -38,7 +38,6 @@ class ItemScreen extends Component{
         itemToEdit.due_date = this.state.due_date;
         itemToEdit.completed = this.state.completed;
         const fireStore = getFirestore();
-        console.log(this.props.todoList.id);
         fireStore.collection("todoLists").doc(this.props.todoList.id).update({items:listToEdit});
         this.props.history.go(-1);
     }

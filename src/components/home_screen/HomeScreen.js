@@ -14,6 +14,7 @@ class HomeScreen extends Component {
         fireStore.collection('todoLists').add({
             name : '',
             owner: '',
+            time_updated:0,
             todoList: {}
         }).then(ref => {
             this.props.history.push('/todoList/'+ref.id);

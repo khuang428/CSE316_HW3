@@ -14,7 +14,7 @@ class ItemsList extends React.Component {
             <div className="todo-lists section">
                 <div className="card z-depth-1 blue-grey darken-1">
                     <div className="card-content white-text row">
-                        <div className="card-title col s4">Description</div>
+                        <div className="card-title col s3">Description</div>
                         <div className="card-title col s3">Due Date</div>
                         <div className="card-title col s3">Status</div>
                     </div>

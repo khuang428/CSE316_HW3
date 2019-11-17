@@ -70,10 +70,10 @@ class ItemCard extends React.Component {
                                     :<div className="card-title col s3">Pending <i className="material-icons">alarm</i></div>}
                         <Button floating fab={{direction: 'left'}} icon={<Icon>dehaze</Icon>} large className="grey darken-2" onClick={(e)=>this.handleEmptyClick(e)}>
                             {id==0?<Button floating icon={<Icon>arrow_upward</Icon>} className="grey lighten-2" onClick={(e)=>this.handleEmptyClick(e)}/>
-                                  :<Button floating icon={<Icon>arrow_upward</Icon>} className="grey darken-1" onClick={(e)=>this.handleMoveUp(e,id)}/>}
+                                  :<Button floating icon={<Icon>arrow_upward</Icon>} className="yellow darken-1" onClick={(e)=>this.handleMoveUp(e,id)}/>}
                             {id==todoList.items.length-1?<Button floating icon={<Icon>arrow_downward</Icon>} className="grey lighten-2" onClick={(e)=>this.handleEmptyClick(e)}/>
-                                                        :<Button floating icon={<Icon>arrow_downward</Icon>} className="grey darken-1" onClick={(e)=>this.handleMoveDown(e,id)}/>}
-                            <Button floating icon={<Icon>delete</Icon>} className="grey darken-1" onClick={(e)=>this.handleDelete(e,id)}/>
+                                                        :<Button floating icon={<Icon>arrow_downward</Icon>} className="amber darken-1" onClick={(e)=>this.handleMoveDown(e,id)}/>}
+                            <Button floating icon={<Icon>delete</Icon>} className="orange darken-1" onClick={(e)=>this.handleDelete(e,id)}/>
                         </Button>
                     </div>
                     <div className="card-content white-text assigned-row">Assigned to: {item.assigned_to}</div>
@@ -85,10 +85,10 @@ class ItemCard extends React.Component {
                         {item.completed?<div className="card-title col s3">Completed <i className="material-icons">alarm_on</i></div>
                                     :<div className="card-title col s3">Pending <i className="material-icons">alarm</i></div>}
                         <Button floating fab={{direction: 'left'}} icon={<Icon>dehaze</Icon>} large className="grey darken-2" onClick={(e)=>this.handleEmptyClick(e)}>
-                            <Button floating icon={<Icon>arrow_upward</Icon>} className="grey darken-1" onClick={(e)=>this.handleMoveUp(e,id)}/>
+                            <Button floating icon={<Icon>arrow_upward</Icon>} className="yellow darken-1" onClick={(e)=>this.handleMoveUp(e,id)}/>
                             {id==todoList.items.length-1?<Button floating icon={<Icon>arrow_downward</Icon>} className="grey lighten-2" onClick={(e)=>this.handleEmptyClick(e)}/>
-                                                        :<Button floating icon={<Icon>arrow_downward</Icon>} className="grey darken-1" onClick={(e)=>this.handleMoveDown(e,id)}/>}
-                            <Button floating icon={<Icon>delete</Icon>} className="grey darken-1" onClick={(e)=>this.handleDelete(e,id)}/>
+                                                        :<Button floating icon={<Icon>arrow_downward</Icon>} className="amber darken-1" onClick={(e)=>this.handleMoveDown(e,id)}/>}
+                            <Button floating icon={<Icon>delete</Icon>} className="orange darken-1" onClick={(e)=>this.handleDelete(e,id)}/>
                         </Button>
                     </div>
                     <div className="card-content white-text assigned-row">Assigned to: {item.assigned_to}</div>

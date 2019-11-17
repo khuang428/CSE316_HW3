@@ -66,6 +66,11 @@ input[type=password]:not(.browser-default):focus:not([readonly]) + label{
   border: 2px solid #546e7a;
   background-color: #546e7a;
 }
+
+.list-header{
+  cursor: pointer;
+}
+
 .row{
   margin:0;
   padding-bottom: 0!important;

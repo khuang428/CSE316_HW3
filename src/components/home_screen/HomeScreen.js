@@ -14,6 +14,7 @@ class HomeScreen extends Component {
             name : '',
             owner: '',
             time_updated: new Date().getTime(),
+            sort_criteria: "default",
             items:[]
         }).then(ref => {
             this.props.history.push('/todoList/'+ref.id);

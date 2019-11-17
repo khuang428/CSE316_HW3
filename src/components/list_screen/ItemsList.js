@@ -4,8 +4,63 @@ import { Link } from 'react-router-dom';
 import { compose } from 'redux';
 import ItemCard from './ItemCard';
 import { firestoreConnect } from 'react-redux-firebase';
+import { getFirestore } from 'redux-firestore';
 
 class ItemsList extends React.Component {
+
+    state ={
+        sort_criteria: this.props.todoList.sort_criteria
+    }
+
+    handleSort = (e, criteria) =>{
+        const { target } = e;
+        const targetId = target.id;
+        let listToEdit = this.props.todoList.items;
+        this.setState({sort_criteria: criteria},function(){
+            listToEdit = listToEdit.sort(this.compare);
+            for(let i = 0;i < listToEdit.length;i++){
+                listToEdit[i].key = i;
+                listToEdit[i].id = i;
+                const firestore = getFirestore();
+                firestore.collection('todoLists').doc(this.props.todoList.id).update({items: listToEdit, sort_criteria: this.state.sort_criteria}); 
+            }
+        });    
+    }
+
+    compare = (a,b) => {
+        const criteria = this.state.sort_criteria;
+        if(criteria == "descriptionDecreasing" || criteria == "dueDateDecreasing" || criteria == "completedDecreasing"){
+            let temp = a;
+            a = b;
+            b = temp;
+        }
+        if(criteria == "descriptionIncreasing" || criteria == "descriptionDecreasing"){
+            if(a.description < b.description){
+                return -1;
+            }else if(a.description > b.description){
+                return 1;
+            }else{
+                return 0;
+            }
+        }else if(criteria == "dueDateIncreasing" || criteria == "dueDateDecreasing"){
+            if(a.due_date < b.due_date){
+                return -1;
+            }else if(a.due_date > b.due_date){
+                return 1;
+            }else{
+                return 0;
+            }
+        }else{
+            if(a.completed < b.completed){
+                return -1;
+            }else if(a.completed > b.completed){
+                return 1;
+            }else{
+                return 0;
+            }
+        }
+    }
+
     render() {
         const todoList = this.props.todoList;
         const items = todoList.items;
@@ -14,9 +69,12 @@ class ItemsList extends React.Component {
             <div className="todo-lists section">
                 <div className="card z-depth-1 blue-grey darken-1">
                     <div className="card-content white-text row">
-                        <div className="card-title col s3">Description</div>
-                        <div className="card-title col s3">Due Date</div>
-                        <div className="card-title col s3">Status</div>
+                        <div className="card-title col s3 list-header" id ="description" onClick={this.state.sort_criteria == "descriptionIncreasing"? (e) => {this.handleSort(e,"descriptionDecreasing")}
+                                                                                                                                              : (e) => {this.handleSort(e,"descriptionIncreasing")}}>Description</div>
+                        <div className="card-title col s3 list-header" id ="due_date" onClick={this.state.sort_criteria == "dueDateIncreasing"? (e) => {this.handleSort(e,"dueDateDecreasing")}
+                                                                                                                                              : (e) => {this.handleSort(e,"dueDateIncreasing")}}>Due Date</div>
+                        <div className="card-title col s3 list-header" id ="status" onClick={this.state.sort_criteria == "completedIncreasing"? (e) => {this.handleSort(e,"completedDecreasing")}
+                                                                                                                                              : (e) => {this.handleSort(e,"completedIncreasing")}}>Status</div>
                     </div>
                 </div>
 

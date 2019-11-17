@@ -32,11 +32,20 @@ class ItemScreen extends Component{
     handleSubmit = (e) =>{
         e.preventDefault();
         let listToEdit = this.props.todoList.items;
-        let itemToEdit = listToEdit[this.props.item.id];
-        itemToEdit.description = this.state.description;
-        itemToEdit.assigned_to = this.state.assigned_to;
-        itemToEdit.due_date = this.state.due_date;
-        itemToEdit.completed = this.state.completed;
+        if(this.props.item.id == "newItem"){
+            listToEdit.push({description: this.state.description,
+                             assigned_to: this.state.assigned_to,
+                             due_date: this.state.due_date,
+                             completed: this.state.completed,
+                             id : listToEdit.length, 
+                             key: listToEdit.length});
+        }else{
+            let itemToEdit = listToEdit[this.props.item.id];
+            itemToEdit.description = this.state.description;
+            itemToEdit.assigned_to = this.state.assigned_to;
+            itemToEdit.due_date = this.state.due_date;
+            itemToEdit.completed = this.state.completed;
+        }
         const fireStore = getFirestore();
         fireStore.collection("todoLists").doc(this.props.todoList.id).update({items:listToEdit});
         this.props.history.go(-1);
@@ -44,7 +53,6 @@ class ItemScreen extends Component{
 
     render() {
         const auth = this.props.auth;
-        const item = this.props.item;
         if (!auth.uid) {
             return <Redirect to="/" />;
         }
@@ -89,7 +97,8 @@ const mapStateToProps = (state, ownProps) => {
     const { id } = ownProps.match.params;
     const todoList = todoLists ? todoLists[id] : null;
     const{ itemid } = ownProps.match.params;
-    const item = todoList.items[itemid];
+    const item = itemid=="newItem" ?{description: '', assigned_to: '', due_date: '', completed: false}
+                                   :todoList.items[itemid];
     todoList.id = id;
     item.id = itemid;
     return {

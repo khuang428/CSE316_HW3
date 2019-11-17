@@ -29,8 +29,11 @@ class ItemsList extends React.Component {
                         
                     );})
                 }
-                {items.length%2==0?<div className="card blue-grey lighten-1 add-item-card"><i className="material-icons medium white-text add-item-icon">add_circle_outline</i></div>
-                                  :<div className="card blue-grey lighten-2 add-item-card"><i className="material-icons medium white-text add-item-icon">add_circle_outline</i></div>}
+                <Link to={'/todoList/' + todoList.id + '/newItem'}>
+                    {items.length%2==0?<div className="card blue-grey lighten-1 add-item-card"><i className="material-icons medium white-text add-item-icon">add_circle_outline</i></div>
+                                      :<div className="card blue-grey lighten-2 add-item-card"><i className="material-icons medium white-text add-item-icon">add_circle_outline</i></div>}
+                </Link>
+               
             </div>
         );
     }
